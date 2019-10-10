@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "255996876585",
+    "firebase_url": "https://scanimageandroid.firebaseio.com",
+    "project_id": "scanimageandroid",
+    "storage_bucket": "scanimageandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255996876585:android:cd270d8cdfd5c47a024938",
+        "android_client_info": {
+          "package_name": "com.example.scanimage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255996876585-q1a44o91sl48b6nc0immqjbq9pighd4b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.scanimage",
+            "certificate_hash": "8cc7d65f6a8e32dac70fd72fc4b9406d77b34f2e"
+          }
+        },
+        {
+          "client_id": "255996876585-d7apcn0jpqcqsg716t63u6b2m5v8ut39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUeVxJW7S2KwrPZPVGs-pmvPKrhsZ4CIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255996876585-d7apcn0jpqcqsg716t63u6b2m5v8ut39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
