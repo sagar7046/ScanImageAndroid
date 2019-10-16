@@ -1,41 +1,64 @@
 package com.example.scanimage;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationListener;
+import android.os.Build;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.provider.MediaStore;
-import android.view.View;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
-import androidx.core.view.GravityCompat;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-
+import android.text.LoginFilter;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.view.Menu;
-import android.widget.Button;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnRequestPermissionsResultCallback {
+        implements NavigationView.OnNavigationItemSelectedListener, OnRequestPermissionsResultCallback, MessageListener,LocationListener {
     Button bntClick;
+
+    protected LocationManager locationManager;
+    protected LocationListener locationListener;
+    protected Context context;
+    TextView txtLat;
+    String lat;
+    String provider;
+    protected String latitude, longitude;
+    protected boolean gps_enabled, network_enabled;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        SMSReciever.bindListener(this);
+
         FloatingActionButton fab = findViewById(R.id.fab);
+
+
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +128,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            Intent intent=new Intent(this,Main2Activity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
             Intent intent=new Intent(this,ScrollingActivity.class);
             startActivity(intent);
@@ -120,5 +144,48 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void messageRecieved(String Message) {
+
+        Log.d("ghhhghg","bbnbn");
+        if(Message.equals("Phone"))
+        {
+            Log.d("Log","hfdj");
+            GetStatus();
+        }
+
+        Toast.makeText(this,"Incoming Message"+Message,Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    @SuppressLint("MissingPermission")
+    public void GetStatus()
+    {
+        Log.d("Location","sdkdjf");
+        locationManager=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
+    }
+    @Override
+    public void onLocationChanged(Location location) {
+        Log.d("Change",""+location.getLongitude());
+        Toast.makeText(getApplicationContext(),"Location"+location.getLatitude()+" "+location.getLongitude(),Toast.LENGTH_LONG).show();
+
+    }
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
     }
 }
