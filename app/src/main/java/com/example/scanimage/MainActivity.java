@@ -1,17 +1,13 @@
 package com.example.scanimage;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
 import android.location.LocationListener;
-import android.os.Build;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.LoginFilter;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
