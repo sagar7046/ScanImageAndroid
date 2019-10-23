@@ -130,7 +130,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent=new Intent(this,ScrollingActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_tools) {
-
+            Intent intent=new Intent(this, ScanActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
