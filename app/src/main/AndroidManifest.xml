@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ScanActivity"></activity>
+        <activity android:name=".Main3Activity"></activity>
+        <activity android:name=".ScanActivity" />
         <activity android:name=".Main2Activity" />
 
         <meta-data

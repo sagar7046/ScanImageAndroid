@@ -2,6 +2,7 @@ package com.example.scanimage;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Intent;
 import android.graphics.Point;
@@ -12,9 +13,12 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
@@ -24,6 +28,9 @@ import java.net.URI;
 
 public class ScanActivity extends AppCompatActivity {
     Button btn_scan_text;
+    public  String text="";
+    CoordinatorLayout coordinatorLayout;
+    View v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +68,18 @@ public class ScanActivity extends AppCompatActivity {
                                     public void onSuccess(FirebaseVisionText firebaseVisionText) {
                                         // Task completed successfully
                                         // ...
+
                                         for (FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()) {
-                                            Rect boundingBox = block.getBoundingBox();
-                                            Point[] cornerPoints = block.getCornerPoints();
-                                            String text = block.getText();
+                                            text = text+ block.getText()+"\n";
                                             Log.d("VISION",text);
+                                            v=findViewById(R.id.btn_scan_text);
+                                           // Snackbar.make(v,"Recognized Text:"+text,Snackbar.LENGTH_LONG).show();
                                         }
+                                        Intent intent=new Intent(getApplicationContext(),Main3Activity.class);
+                                        intent.putExtra("Data",text);
+                                        startActivity(intent);
                                     }});
+                text="";
             }
             catch(Exception ex)
             {
