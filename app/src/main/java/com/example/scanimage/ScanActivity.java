@@ -45,6 +45,7 @@ public class ScanActivity extends AppCompatActivity {
                 intent.setType("image/*");
                 startActivityForResult(intent,100);
 
+
             }
         });
     }

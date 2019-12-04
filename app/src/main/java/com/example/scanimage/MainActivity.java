@@ -135,6 +135,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
+        else if(id== R.id.nav_detect_face)
+        {
+            Intent  intent=new Intent(this,FaceDetection.class);
+            startActivity(intent);
+        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

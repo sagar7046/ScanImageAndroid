@@ -18,14 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Main3Activity"></activity>
+        <activity android:name=".FaceDetection"></activity>
+        <activity android:name=".Main3Activity" />
         <activity android:name=".ScanActivity" />
         <activity android:name=".Main2Activity" />
 
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="ocr" />
-
         <activity
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
