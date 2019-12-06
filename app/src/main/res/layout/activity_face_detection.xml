@@ -22,6 +22,26 @@
 
 
     </com.google.android.material.appbar.AppBarLayout>
+    <TextureView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/face_finder"
+
+        />
+
+    <ImageButton
+        android:id="@+id/imgCapture"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_alignBottom="@id/btn_detect_face"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="-294dp"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +52,6 @@
         android:fontFamily="sans-serif-medium"
         android:textSize="20sp"
         android:textStyle="bold"
-
         android:textColor="#CF2C26"
         />
 </RelativeLayout>
